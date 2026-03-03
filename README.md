@@ -5,7 +5,7 @@ Gym management system featuring secure JWT authentication, role-based access con
 ## **Client-Server Architecture**
 
 ```
-GymManagementSystem (Monorepo)
+Gym App (Monorepo)
 ├── Backend/           # ASP.NET Core Web API + PostgreSQL
 ├── Frontend/          # React.js (Vite)
 └── Database/          # Migrations & Scripts
