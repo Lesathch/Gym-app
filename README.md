@@ -41,6 +41,7 @@ Backend/
 ├── Services/        # Business logic layer
 ├── Repositories/    # Data access layer
 ├── Models/          # EF Core entities
+├── Routes/          # Presentation Layer: Endpoints
 └── Tests/           # xUnit unit & integration tests
 
 Frontend/src/
