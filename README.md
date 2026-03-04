@@ -52,7 +52,6 @@ Frontend/src/
 ├── services/        # API clients (Axios + JWT interceptor)
 └── types/           # TypeScript interfaces
 ```
-
 ## 🚀 **API Endpoints**
 
 ### Authentication
@@ -66,22 +65,22 @@ Frontend/src/
 ├── POST   /api/members
 ├── PUT    /api/members/{id}
 ├── DELETE /api/members/{id}
-└── GET    /api/members/{id}/membership    # Estado actual de membresía
+└── GET    /api/members/{id}/membership    # Current membership status
 
-### Memberships (Admin/Recepcionist)
-├── GET    /api/memberships                # Todos los planes disponibles
+### Memberships (Admin/Receptionist)
+├── GET    /api/memberships                # All available plans
 ├── GET    /api/memberships/{id}
 ├── POST   /api/memberships
 ├── PUT    /api/memberships/{id}
 └── DELETE /api/memberships/{id}
 
 ### Trainers (Admin only)
-├── GET    /api/trainers                   # Lista de trainers
+├── GET    /api/trainers                   # Trainer list
 ├── POST   /api/trainers
 ├── PUT    /api/trainers/{id}
 └── DELETE /api/trainers/{id}
 
-### Classes (Admin/Recepcionist)
+### Classes (Admin/Receptionist)
 ├── GET    /api/classes                    # Available classes
 ├── GET    /api/classes/{id}
 ├── POST   /api/classes
@@ -91,26 +90,28 @@ Frontend/src/
 └── DELETE /api/classes/{id}/enroll        # Member unenroll
 
 ### Attendance (Receptionist/Trainer)
-├── POST /api/attendance/{memberId}/checkin  # Marca asistencia diaria
-└── GET  /api/attendance/member/{memberId}   # Historial de asistencias
+├── POST /api/attendance/{memberId}/checkin  # Marks daily attendance
+└── GET  /api/attendance/member/{memberId}   # Attendance history
 
-### Payments (Not implemented in this version).
+### Payments (Not implemented in this version)
 ├── POST   /api/payments/register-payment
 ├── GET    /api/members/{id}/payments
 ├── GET    /api/payments/pending
-└── GET    /api/payments/summary            # Resumen general
+└── GET    /api/payments/summary            # General summary
 
 ### Reports (Admin only)
 ├── GET /api/reports/members-stats
 ├── GET /api/reports/revenue
-├── GET /api/reports/attendance-stats       # Estadísticas de asistencia
-└── GET /api/reports/class-usage            # Uso de clases por member
+├── GET /api/reports/attendance-stats       # Attendance statistics
+└── GET /api/reports/class-usage            # Class usage per member
 
 ## 🧪 **Testing Strategy**
 
 - **Backend**: xUnit tests (Controllers, Services, Repositories)
 - **Integration**: API endpoint testing with TestServer
 - **Frontend**: React Testing Library (planned)
+
+***
 
 ## 🚀 **Quick Start**
 
