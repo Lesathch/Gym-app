@@ -37,10 +37,11 @@ Deployment: Docker Compose
 
 ```
 Backend/
-├── Controllers/     # Auth, Members, Classes, Payments
-├── Services/        # Business logic layer
+├── Controllers/     # Business logic 
+├── Services/        # External integrations
+├── DTOs/            # Data transfer
 ├── Repositories/    # Data access layer
-├── Models/          # EF Core entities
+├── Models/          # Request Response Models
 ├── Routes/          # Presentation Layer: Endpoints
 └── Tests/           # xUnit unit & integration tests
 
@@ -55,31 +56,31 @@ Frontend/src/
 ## 🚀 **API Endpoints**
 
 Authentication:
-POST /api/auth/login     → { token, roles: ["Admin", "Trainer"] }
-POST /api/auth/register
-POST /api/auth/refresh
+├──POST /api/auth/login     # → { token, roles: ["Admin", "Trainer"] }
+├──POST /api/auth/register
+├──POST /api/auth/refresh
 
 Members (Role-protected):
-GET    /api/members              # Paginated + filters
-GET    /api/members/{id}
-POST   /api/members
-PUT    /api/members/{id}
-DELETE /api/members/{id}
+├──GET    /api/members              # Paginated + filters
+├──GET    /api/members/{id}
+├──POST   /api/members
+├──PUT    /api/members/{id}
+├──DELETE /api/members/{id}
 
 Classes:
-GET    /api/classes              # Available classes
-GET    /api/classes/{id}
-POST   /api/classes
-POST   /api/classes/{id}/members # Enroll/unenroll
+├──GET    /api/classes              # Available classes
+├──GET    /api/classes/{id}
+├──POST   /api/classes
+├──POST   /api/classes/{id}/members # Enroll/unenroll
 
 Payments:
-POST   /api/payments/register-payment
-GET    /api/members/{id}/payments
-GET    /api/payments/pending
+├──POST   /api/payments/register-payment
+├──GET    /api/members/{id}/payments
+├──GET    /api/payments/pending
 
 Reports (Admin only):
-GET    /api/reports/members-stats
-GET    /api/reports/revenue
+├──GET    /api/reports/members-stats
+├──GET    /api/reports/revenue
 
 
 ## 🧪 **Testing Strategy**
