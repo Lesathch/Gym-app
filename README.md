@@ -16,7 +16,7 @@ Gym App (Monorepo)
 - **Secure Authentication**: JWT tokens with role-based access (Admin, Trainer, Receptionist) + CORS enabled
 - **Member Management**: CRUD operations, membership tracking
 - **Class Scheduling**: Group classes with member enrollment
-- **Payment Processing**: Track payments and pending dues
+- **Payment Processing**: Track payments and pending dues (Not in this version, I will be updating it.)
 - **Reporting Dashboard**: Member stats and revenue reports
 - **Unit Testing**: xUnit tests
 - **Responsive UI**: React + CSS Modules + React Router
