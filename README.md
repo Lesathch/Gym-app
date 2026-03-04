@@ -96,8 +96,6 @@ Reports (Admin only):
 ├──GET    /api/reports/members-stats
 └──GET    /api/reports/revenue
 ```
-```
-
 
 ## 🧪 **Testing Strategy**
 
