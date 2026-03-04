@@ -55,32 +55,48 @@ Frontend/src/
 
 ## 🚀 **API Endpoints**
 
+### Authentication
+```
 Authentication:
 ├──POST /api/auth/login     # → { token, roles: ["Admin", "Trainer"] }
 ├──POST /api/auth/register
-├──POST /api/auth/refresh
+└──POST /api/auth/refresh
+```
 
+### Members (Role-protected)
+```
 Members (Role-protected):
 ├──GET    /api/members              # Paginated + filters
 ├──GET    /api/members/{id}
 ├──POST   /api/members
 ├──PUT    /api/members/{id}
-├──DELETE /api/members/{id}
+└──DELETE /api/members/{id}
+```
 
+### Classes
+```
 Classes:
 ├──GET    /api/classes              # Available classes
 ├──GET    /api/classes/{id}
 ├──POST   /api/classes
-├──POST   /api/classes/{id}/members # Enroll/unenroll
+└──POST   /api/classes/{id}/members # Enroll/unenroll
+```
 
+### Payments
+```
 Payments:
 ├──POST   /api/payments/register-payment
 ├──GET    /api/members/{id}/payments
-├──GET    /api/payments/pending
+└──GET    /api/payments/pending
+```
 
+### Reports (Admin only)
+```
 Reports (Admin only):
 ├──GET    /api/reports/members-stats
-├──GET    /api/reports/revenue
+└──GET    /api/reports/revenue
+```
+```
 
 
 ## 🧪 **Testing Strategy**
