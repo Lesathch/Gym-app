@@ -1,0 +1,21 @@
+# Normalize all text files to LF on the repo
+* text=auto eol=lf
+
+# Explicitly set common file types
+*.tsx    text eol=lf
+*.ts     text eol=lf
+*.js     text eol=lf
+*.jsx    text eol=lf
+*.json   text eol=lf
+*.css    text eol=lf
+*.md     text eol=lf
+*.html   text eol=lf
+*.svg    text eol=lf
+*.cs     text eol=lf
+*.csproj text eol=lf
+
+# Binary files — no conversion
+*.png    binary
+*.jpg    binary
+*.ico    binary
+*.woff2  binary
