@@ -58,19 +58,20 @@ Frontend/src/
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/auth/login` | Returns `{ token, roles: ["Admin", "Trainer", "Receptionist"] }` |
-| `POST` | `/api/auth/register` | Register a new user |
+| `POST` | `/api/auth/login` | Works for Admin, Receptionist and Trainer — returns `{ token, role }` |
 | `POST` | `/api/auth/refresh` | Refresh access token |
+
+> ⚠️ The initial Admin account is seeded directly in the database. No public register endpoint is exposed.
 
 ---
 
-### 👥 Members *(Role-protected)*
+### 👥 Members *(Admin / Receptionist)*
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/members` | Get all members — paginated + filters |
 | `GET` | `/api/members/{id}` | Get member by ID |
-| `POST` | `/api/members` | Create a new member |
+| `POST` | `/api/members` | Admin / Receptionist creates a member account |
 | `PUT` | `/api/members/{id}` | Update member |
 | `DELETE` | `/api/members/{id}` | Delete member |
 | `GET` | `/api/members/{id}/membership` | Current membership status |
@@ -83,7 +84,7 @@ Frontend/src/
 |--------|----------|-------------|
 | `GET` | `/api/memberships` | Get all available plans |
 | `GET` | `/api/memberships/{id}` | Get membership by ID |
-| `POST` | `/api/memberships` | Create a new membership plan |
+| `POST` | `/api/memberships` | Admin / Receptionist creates a membership plan |
 | `PUT` | `/api/memberships/{id}` | Update membership plan |
 | `DELETE` | `/api/memberships/{id}` | Delete membership plan |
 
@@ -94,9 +95,20 @@ Frontend/src/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/trainers` | Get all trainers |
-| `POST` | `/api/trainers` | Add a new trainer |
+| `POST` | `/api/trainers` | Admin creates a trainer account |
 | `PUT` | `/api/trainers/{id}` | Update trainer |
 | `DELETE` | `/api/trainers/{id}` | Delete trainer |
+
+---
+
+### 🗂️ Receptionists *(Admin only)*
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/receptionists` | Get all receptionists |
+| `POST` | `/api/receptionists` | Admin creates a receptionist account |
+| `PUT` | `/api/receptionists/{id}` | Update receptionist |
+| `DELETE` | `/api/receptionists/{id}` | Delete receptionist |
 
 ---
 
@@ -143,7 +155,6 @@ Frontend/src/
 | `GET` | `/api/reports/attendance-stats` | Attendance statistics |
 | `GET` | `/api/reports/class-usage` | Class usage per member |
 
----
 
 ## 🧪 Testing Strategy
 
