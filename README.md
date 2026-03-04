@@ -56,46 +56,55 @@ Frontend/src/
 ## 🚀 **API Endpoints**
 
 ### Authentication
-```
-Authentication:
-├──POST /api/auth/login     # → { token, roles: ["Admin", "Trainer"] }
-├──POST /api/auth/register
-└──POST /api/auth/refresh
-```
+├── POST /api/auth/login     # → { token, roles: ["Admin", "Trainer", "Receptionist"] }
+├── POST /api/auth/register
+└── POST /api/auth/refresh
 
 ### Members (Role-protected)
-```
-Members (Role-protected):
-├──GET    /api/members              # Paginated + filters
-├──GET    /api/members/{id}
-├──POST   /api/members
-├──PUT    /api/members/{id}
-└──DELETE /api/members/{id}
-```
+├── GET    /api/members                    # Paginated + filters
+├── GET    /api/members/{id}
+├── POST   /api/members
+├── PUT    /api/members/{id}
+├── DELETE /api/members/{id}
+└── GET    /api/members/{id}/membership    # Estado actual de membresía
+
+### Memberships (Admin/Trainer)
+├── GET    /api/memberships                # Todos los planes disponibles
+├── GET    /api/memberships/{id}
+├── POST   /api/memberships
+├── PUT    /api/memberships/{id}
+└── DELETE /api/memberships/{id}
+
+### Trainers (Admin only)
+├── GET    /api/trainers                   # Lista de trainers
+├── POST   /api/trainers
+├── PUT    /api/trainers/{id}
+└── DELETE /api/trainers/{id}
 
 ### Classes
-```
-Classes:
-├──GET    /api/classes              # Available classes
-├──GET    /api/classes/{id}
-├──POST   /api/classes
-└──POST   /api/classes/{id}/members # Enroll/unenroll
-```
+├── GET    /api/classes                    # Available classes
+├── GET    /api/classes/{id}
+├── POST   /api/classes
+├── PUT    /api/classes/{id}
+├── DELETE /api/classes/{id}
+├── POST   /api/classes/{id}/enroll        # Member enroll
+└── DELETE /api/classes/{id}/enroll        # Member unenroll
+
+### Attendance (Receptionist/Trainer)
+├── POST /api/attendance/{memberId}/checkin  # Marca asistencia diaria
+└── GET  /api/attendance/member/{memberId}   # Historial de asistencias
 
 ### Payments
-```
-Payments:
-├──POST   /api/payments/register-payment
-├──GET    /api/members/{id}/payments
-└──GET    /api/payments/pending
-```
+├── POST   /api/payments/register-payment
+├── GET    /api/members/{id}/payments
+├── GET    /api/payments/pending
+└── GET    /api/payments/summary            # Resumen general
 
 ### Reports (Admin only)
-```
-Reports (Admin only):
-├──GET    /api/reports/members-stats
-└──GET    /api/reports/revenue
-```
+├── GET /api/reports/members-stats
+├── GET /api/reports/revenue
+├── GET /api/reports/attendance-stats       # Estadísticas de asistencia
+└── GET /api/reports/class-usage            # Uso de clases por member
 
 ## 🧪 **Testing Strategy**
 
