@@ -68,7 +68,7 @@ Frontend/src/
 ├── DELETE /api/members/{id}
 └── GET    /api/members/{id}/membership    # Estado actual de membresía
 
-### Memberships (Admin/Trainer)
+### Memberships (Admin/Recepcionist)
 ├── GET    /api/memberships                # Todos los planes disponibles
 ├── GET    /api/memberships/{id}
 ├── POST   /api/memberships
@@ -81,7 +81,7 @@ Frontend/src/
 ├── PUT    /api/trainers/{id}
 └── DELETE /api/trainers/{id}
 
-### Classes
+### Classes (Admin/Recepcionist)
 ├── GET    /api/classes                    # Available classes
 ├── GET    /api/classes/{id}
 ├── POST   /api/classes
@@ -94,7 +94,7 @@ Frontend/src/
 ├── POST /api/attendance/{memberId}/checkin  # Marca asistencia diaria
 └── GET  /api/attendance/member/{memberId}   # Historial de asistencias
 
-### Payments
+### Payments (Not implemented in this version).
 ├── POST   /api/payments/register-payment
 ├── GET    /api/members/{id}/payments
 ├── GET    /api/payments/pending
