@@ -52,66 +52,107 @@ Frontend/src/
 ├── services/        # API clients (Axios + JWT interceptor)
 └── types/           # TypeScript interfaces
 ```
-## 🚀 **API Endpoints**
+## 🚀 API Endpoints
 
-### Authentication
-├── POST /api/auth/login     # → { token, roles: ["Admin", "Trainer", "Receptionist"] }
-├── POST /api/auth/register
-└── POST /api/auth/refresh
+### 🔐 Authentication
 
-### Members (Role-protected)
-├── GET    /api/members                    # Paginated + filters
-├── GET    /api/members/{id}
-├── POST   /api/members
-├── PUT    /api/members/{id}
-├── DELETE /api/members/{id}
-└── GET    /api/members/{id}/membership    # Current membership status
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/login` | Returns `{ token, roles: ["Admin", "Trainer", "Receptionist"] }` |
+| `POST` | `/api/auth/register` | Register a new user |
+| `POST` | `/api/auth/refresh` | Refresh access token |
 
-### Memberships (Admin/Receptionist)
-├── GET    /api/memberships                # All available plans
-├── GET    /api/memberships/{id}
-├── POST   /api/memberships
-├── PUT    /api/memberships/{id}
-└── DELETE /api/memberships/{id}
+---
 
-### Trainers (Admin only)
-├── GET    /api/trainers                   # Trainer list
-├── POST   /api/trainers
-├── PUT    /api/trainers/{id}
-└── DELETE /api/trainers/{id}
+### 👥 Members *(Role-protected)*
 
-### Classes (Admin/Receptionist)
-├── GET    /api/classes                    # Available classes
-├── GET    /api/classes/{id}
-├── POST   /api/classes
-├── PUT    /api/classes/{id}
-├── DELETE /api/classes/{id}
-├── POST   /api/classes/{id}/enroll        # Member enroll
-└── DELETE /api/classes/{id}/enroll        # Member unenroll
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/members` | Get all members — paginated + filters |
+| `GET` | `/api/members/{id}` | Get member by ID |
+| `POST` | `/api/members` | Create a new member |
+| `PUT` | `/api/members/{id}` | Update member |
+| `DELETE` | `/api/members/{id}` | Delete member |
+| `GET` | `/api/members/{id}/membership` | Current membership status |
 
-### Attendance (Receptionist/Trainer)
-├── POST /api/attendance/{memberId}/checkin  # Marks daily attendance
-└── GET  /api/attendance/member/{memberId}   # Attendance history
+---
 
-### Payments (Not implemented in this version)
-├── POST   /api/payments/register-payment
-├── GET    /api/members/{id}/payments
-├── GET    /api/payments/pending
-└── GET    /api/payments/summary            # General summary
+### 💳 Memberships *(Admin / Receptionist)*
 
-### Reports (Admin only)
-├── GET /api/reports/members-stats
-├── GET /api/reports/revenue
-├── GET /api/reports/attendance-stats       # Attendance statistics
-└── GET /api/reports/class-usage            # Class usage per member
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/memberships` | Get all available plans |
+| `GET` | `/api/memberships/{id}` | Get membership by ID |
+| `POST` | `/api/memberships` | Create a new membership plan |
+| `PUT` | `/api/memberships/{id}` | Update membership plan |
+| `DELETE` | `/api/memberships/{id}` | Delete membership plan |
 
-## 🧪 **Testing Strategy**
+---
 
-- **Backend**: xUnit tests (Controllers, Services, Repositories)
-- **Integration**: API endpoint testing with TestServer
-- **Frontend**: React Testing Library (planned)
+### 🏋️ Trainers *(Admin only)*
 
-***
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/trainers` | Get all trainers |
+| `POST` | `/api/trainers` | Add a new trainer |
+| `PUT` | `/api/trainers/{id}` | Update trainer |
+| `DELETE` | `/api/trainers/{id}` | Delete trainer |
+
+---
+
+### 📅 Classes *(Admin / Receptionist)*
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/classes` | Get all available classes |
+| `GET` | `/api/classes/{id}` | Get class by ID |
+| `POST` | `/api/classes` | Create a new class |
+| `PUT` | `/api/classes/{id}` | Update class |
+| `DELETE` | `/api/classes/{id}` | Delete class |
+| `POST` | `/api/classes/{id}/enroll` | Enroll a member |
+| `DELETE` | `/api/classes/{id}/enroll` | Unenroll a member |
+
+---
+
+### 📋 Attendance *(Receptionist / Trainer)*
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/attendance/{memberId}/checkin` | Mark daily attendance |
+| `GET` | `/api/attendance/member/{memberId}` | Get attendance history |
+
+---
+
+### 💰 Payments *(Not implemented in this version)*
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/payments/register-payment` | Register a payment |
+| `GET` | `/api/members/{id}/payments` | Get payments by member |
+| `GET` | `/api/payments/pending` | Get pending payments |
+| `GET` | `/api/payments/summary` | General payments summary |
+
+---
+
+### 📊 Reports *(Admin only)*
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/reports/members-stats` | Member statistics |
+| `GET` | `/api/reports/revenue` | Revenue report |
+| `GET` | `/api/reports/attendance-stats` | Attendance statistics |
+| `GET` | `/api/reports/class-usage` | Class usage per member |
+
+---
+
+## 🧪 Testing Strategy
+
+| Layer | Tool | Scope |
+|-------|------|-------|
+| **Backend** | xUnit | Controllers, Services, Repositories |
+| **Integration** | TestServer | API endpoint testing |
+| **Frontend** | React Testing Library | *(planned)* |
+
 
 ## 🚀 **Quick Start**
 
