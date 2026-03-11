@@ -20,6 +20,7 @@ namespace Services
                     Email = "admin@gym.com",
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin1234!"),
                     Role = "Admin"
+                    
                 });
                 await _context.SaveChangesAsync();
             }

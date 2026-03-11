@@ -6,16 +6,19 @@ using Repositories;
 using Services;
 using System.Text;
 
+
 // ============================================================
-// BUILDER
+// BUILDER 
 // ============================================================
 var builder = WebApplication.CreateBuilder(args);
+
 
 // ------------------------------------------------------------
 // Database — EF Core + PostgreSQL
 // ------------------------------------------------------------
 builder.Services.AddDbContext<GymDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // ------------------------------------------------------------
 // Authentication — JWT (Admin, Receptionist, Trainer)
@@ -38,8 +41,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
+
 // ------------------------------------------------------------
-// CORS — Frontend React (localhost:5173)
+// CORS — Frontend React
 // ------------------------------------------------------------
 builder.Services.AddCors(options =>
 {
@@ -49,27 +53,32 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod());
 });
 
+
 // ------------------------------------------------------------
-// Services (Services/)
+// Services (Services/) 
 // ------------------------------------------------------------
 builder.Services.AddSingleton<JwtService>();
 builder.Services.AddScoped<SeedService>();
+
 
 // ------------------------------------------------------------
 // Repositories (Repositories/)
 // ------------------------------------------------------------
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
+
 // ------------------------------------------------------------
-// Controllers + OpenAPI (Controllers/)
+// Controllers + OpenAPI (Controllers)
 // ------------------------------------------------------------
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
+
 // ============================================================
-// APP PIPELINE
+// APP
 // ============================================================
 var app = builder.Build();
+
 
 // ------------------------------------------------------------
 // OpenAPI 
@@ -79,11 +88,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+
 // ------------------------------------------------------------
-// Middlewares (Middlewares/) 
+// Middlewares (Middlewares/)
 // ------------------------------------------------------------
-app.UseMiddleware<JwtValidationMiddleware>();   // ✅ Auth errors
-// app.UseMiddleware<RequestLoggingMiddleware>(); // Agregar cuando esté listo
+app.UseMiddleware<JwtValidationMiddleware>();
+
 
 // ------------------------------------------------------------
 // Pipeline HTTP
@@ -92,16 +102,17 @@ app.UseHttpsRedirection();
 app.UseCors("frontend");
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
+
 // ------------------------------------------------------------
-// Seed
+// Seed (Services/SeedService.cs) 
 // ------------------------------------------------------------
 using (var scope = app.Services.CreateScope())
 {
     var seed = scope.ServiceProvider.GetRequiredService<SeedService>();
     await seed.SeedAdminAsync();
 }
+
 
 app.Run();

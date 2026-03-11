@@ -15,7 +15,7 @@ namespace Middlewares
             {
                 await _next(context);
 
-                // 401 — Token inválido/expirado
+                // 401 — Invalid Token or Expired
                 if (context.Response.StatusCode == (int)HttpStatusCode.Unauthorized)
                 {
                     context.Response.ContentType = "application/json";
@@ -23,7 +23,7 @@ namespace Middlewares
                     await context.Response.WriteAsync(JsonSerializer.Serialize(response));
                 }
 
-                // 403 — Sin permisos para el rol
+                // 403 — No permission for the role
                 if (context.Response.StatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     context.Response.ContentType = "application/json";
