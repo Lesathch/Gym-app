@@ -1,12 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+
 using System.Text;
 using Repositories; 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Controllers y OpenAPI
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddSingleton<JwtService>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 

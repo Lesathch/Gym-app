@@ -17,6 +17,7 @@ namespace Repositories
 {
     public class GymDbContext : DbContext
     {
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public GymDbContext(DbContextOptions<GymDbContext> options) : base(options) { }
 
         // DbSets para todos los endpoints
@@ -43,7 +44,15 @@ namespace Repositories
                       .OnDelete(DeleteBehavior.Cascade);
                 entity.HasIndex(e => new { e.MemberId, e.ClassId }).IsUnique();
             });
-
+            
+            modelBuilder.Entity<RefreshToken>(entity =>
+                {
+                    entity.HasOne(r => r.User)
+                        .WithMany()
+                        .HasForeignKey(r => r.UserId)
+                        .OnDelete(DeleteBehavior.Cascade);
+            });
+            
             modelBuilder.Entity<Membership>(entity =>
             {
                 entity.HasOne(m => m.Member)
