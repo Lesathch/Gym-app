@@ -1,5 +1,17 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
+using Microsoft.EntityFrameworkCore.Design;
+using Repositories;
+using Models;  // Namespace/proyecto de tus modelos (Attendance, Member, etc.)
+
+public class GymDbContextFactory : IDesignTimeDbContextFactory<GymDbContext>
+{
+    public GymDbContext CreateDbContext(string[] args)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<GymDbContext>();
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=gym-db;Username=postgres;Password=1024");
+        return new GymDbContext(optionsBuilder.Options);
+    }
+}
 
 namespace Repositories
 {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Repositories; // Ajusta namespace si GymDbContext está en Repositories/
+using Repositories; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-// CORS para React en :5173
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("frontend", policy =>
